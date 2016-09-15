@@ -11,6 +11,7 @@ require 'vcr'
 VCR.configure do |config|
   config.cassette_library_dir = "spec/vcr_cassettes"
   config.hook_into :webmock
+  config.allow_http_connections_when_no_cassette = true
 end
 
 Shoulda::Matchers.configure do |config|
@@ -90,4 +91,3 @@ def stub_omniauth
       {"id_token"=>
         "letsgoooo"}})
 end
-# ya29.CjBeA2AdNMt9jLnymJEtlX_7-yy5HUckrQ93ZnAJSNxUxM_nf-aF0h4zCPFosH5LyNI
