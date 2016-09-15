@@ -91,4 +91,3 @@ def stub_omniauth
       {"id_token"=>
         "letsgoooo"}})
 end
-# ya29.CjBeA2AdNMt9jLnymJEtlX_7-yy5HUckrQ93ZnAJSNxUxM_nf-aF0h4zCPFosH5LyNI
