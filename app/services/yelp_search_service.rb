@@ -5,17 +5,20 @@ class YelpSearchService
   end
 
   def api_call
-    connection.get do |request|
-      request.params['term']                   = term_param
-      request.params['ll']                     = coordinates_param
-      request.params['oauth_consumer_key']     = consumer_key_param
-      request.params['oauth_token']            = token_param
-      request.params['oauth_signature_method'] = signature_method_param
+    response = connection.get do |request|
+      request.params['limit']                  = 5
+      request.params['term']                   = "food"
+      request.params['ll']                     = "39.7511873, -105.0031571"
+      request.params['oauth_consumer_key']     = ENV['CONSUMER_KEY']
+      request.params['oauth_token']            = ENV['TOKEN']
+      request.params['oauth_signature_method'] = "HMAC-SHA1"
       request.params['oauth_signature']        = signature_param
-      request.params['oauth_timestamp']        = timestamp_param
+      request.params['oauth_timestamp']        = Time.now.to_i
       request.params['oauth_nonce']            = nonce_param
-      request.params['oauth_version']          = version_param
+      request.params['oauth_version']          = 1.0
     end
+    binding.pry
+    parse(response.body)
   end
 
   def term_param
@@ -43,7 +46,7 @@ class YelpSearchService
   end
 
   def nonce_param
-    SecureRandom.hex(timestamp_param)
+      rand(10 ** 30).to_s.rjust(30,'0')
   end
 
   def version_param
@@ -56,14 +59,15 @@ class YelpSearchService
   end
 
   def base_string(string)
-    escaped_string = CGI::escape("#{string}")
+    escaped_string = CGI::escape(string)
     sign('key', escaped_string)
   end
 
   def sign( key, base_string )
-    digest = OpenSSL::Digest::Digest.new( 'sha1' )
+    digest = OpenSSL::Digest.new( 'sha1' )
     hmac = OpenSSL::HMAC.digest( digest, key, base_string  )
-    Base64.encode64( hmac ).chomp.gsub( /\n/, '' )
+    output = Base64.encode64( hmac ).chomp.gsub( /\n/, '' )
+    binding.pry
   end
 
   private
@@ -71,4 +75,10 @@ class YelpSearchService
   def connection
     @_connection
   end
+
+  def parse(response)
+    JSON.parse(response)
+  end
 end
+
+# "Invalid signature. Expected signature base string: GET&https%3A%2F%2Fapi.yelp.com%2Fv2%2Fsearch&limit%3D5%26ll%3D39.7511873%252C%2520-105.0031571%26oauth_consumer_key%3DGDuUHYsncVCRnXKpBt8GIw%26oauth_nonce%3D132720049625438087379340593444%26oauth_signature_method%3DHMAC-SHA1%26oauth_timestamp%3D1474006901%26oauth_token%3DmYPgAKSCXqg8QndgmT13ckuzi7ubTXlo%26oauth_version%3D1.0%26term%3Dfood"
