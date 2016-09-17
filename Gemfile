@@ -28,6 +28,7 @@ gem 'figaro'
 gem 'faraday'
 gem 'yelp', require: 'yelp'
 gem "omniauth-google-oauth2"
+gem 'oauth'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
