@@ -6,13 +6,13 @@ class CurrentLocationService
 
   def get_location
     response = connection
-    parse(response.body)['location']
+    parse(response.body)
   end
 
   private
 
   def parse(response)
-    JSON.parse(response)
+    JSON.parse(response, symbolize_names: true)[:location]
   end
 
   def connection

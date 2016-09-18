@@ -8,12 +8,12 @@ class YelpSearchService
     access_token = OAuth::AccessToken.new( consumer, ENV['TOKEN'],ENV['TOKEN_SECRET'])
     response = access_token.get("/v2/search?ll=#{latitude_longitude}&limit=10")
     # get param could be method call to if statement of options? or passing the option along with the latitude_longitude
-    parse(response.body)["businesses"]
+    parse(response.body)
   end
 
   private
 
   def parse(response)
-    JSON.parse(response)
+    JSON.parse(response, symbolize_names: true)[:businesses]
   end
 end
