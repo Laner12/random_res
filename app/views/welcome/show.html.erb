@@ -1,7 +1,13 @@
-<p>
-  Welcome to the best app you never knew you needed!
-</p>
-  <p>
-    Would you like to login with
-    <%= button_to "Google", google_login_path, method: :get %>
-  </p>
+<div class="container">
+  <div class="jumbotron">
+    <div class="page_content text-center">
+      <p>
+        Welcome to the best app you never knew you needed!
+      </p>
+      <p>
+        Would you like to login with <%= button_to "Google", google_login_path, method: :get %>
+      </p>
+      <button type="button" class="btn btn-outline-secondary">Google</button>
+    </div>
+  </div>
+</div>
