@@ -21,3 +21,6 @@
 
 # Ignore SimpleCov files
 coverage
+
+/spec/vcr_cassettes
+/public
