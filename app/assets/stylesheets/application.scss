@@ -1,1 +1,25 @@
 /*Declare each .scss file below with @import 'file_name';*/
+body {
+  background-attachment: fixed;
+  background-image: image-url('random_restaurant.JPG');
+  background-position: center;
+  background-size: cover;
+}
+
+.page_content {
+  padding: inherit;
+  background-color: rgb(144, 144, 144);
+  background-position: center;
+}
+
+.jumbotron {
+  margin-top: 10%;
+}
+
+p {
+  text-decoration-color: rgb(75, 153, 173);
+}
+
+#restaurant_name {
+  font-size: 20px;
+}
