@@ -11,11 +11,11 @@ class CurrentLocationService
 
   private
 
-  def parse(response)
-    JSON.parse(response, symbolize_names: true)[:location]
-  end
+    def parse(response)
+      JSON.parse(response, symbolize_names: true)[:location]
+    end
 
-  def connection
-    @_connection
-  end
+    def connection
+      @_connection
+    end
 end

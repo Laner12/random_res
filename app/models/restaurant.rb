@@ -1,13 +1,13 @@
 class Restaurant
   attr_reader :name,
-              :rating_img_url_large,
+              :rating_img_url,
               :review_count,
               :image_url,
               :url
 
   def initialize(raw_restaurant)
     @name                 = raw_restaurant[:name]
-    @rating_img_url_large = raw_restaurant[:rating_img_url_large]
+    @rating_img_url       = raw_restaurant[:rating_img_url]
     @review_count         = raw_restaurant[:review_count]
     @image_url            = raw_restaurant[:image_url]
     @url                  = raw_restaurant[:url]
@@ -15,8 +15,12 @@ class Restaurant
     @is_closed            = raw_restaurant[:is_closed]
   end
 
-  def self.all_by_location
-    location = LocationPresenter.new.format_coordinates
+  def self.all_by_location(input = nil)
+    if input
+      location = input
+    else
+      location = LocationPresenter.new.format_coordinates
+    end
     YelpSearchService.new.api_call(location).map do |raw_restaurant|
       Restaurant.new(raw_restaurant)
     end

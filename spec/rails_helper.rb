@@ -7,6 +7,7 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rails'
 require 'vcr'
+require "rack_session_access/capybara"
 
 VCR.configure do |config|
   config.cassette_library_dir = "spec/vcr_cassettes"
@@ -79,15 +80,15 @@ end
 def stub_omniauth
   OmniAuth.config.test_mode = true
   OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new({
-    "uid"=>"1234",
-    "info"=>
-    {"name"=>"Bobby Robby",
-      "email"=>"BR@example.com",
-      "first_name"=>"Bobby",
-      "last_name"=>"Robby",
-      "image"=>"volcano.jpg"},
-      "credentials"=>{"token"=>"yepthisthegoods"},
-      "extra"=>
-      {"id_token"=>
-        "letsgoooo"}})
+    uid: 1234,
+    info:
+    {name: 'Bobby Robby',
+      email: 'BR@example.com',
+      first_name: 'Bobby',
+      last_name: 'Robby',
+      image: 'http://i.imgur.com/RIwQsL4.jpg'},
+      credentials: {token: 'yepthisthegoods'},
+      extra:
+      {id_token:
+        'letsgoooo'}})
 end
