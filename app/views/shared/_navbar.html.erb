@@ -1,11 +1,11 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
+  <div class="container-fluid">
     <div class="navbar-brand">
       <strong>RandomRes</strong>
     </div>
     <% if current_user %>
     <ul class="nav navbar-nav navbar-right">
-      <li><%= link_to "Logout", google_logout_path, method: :delete %></li>
+      <li><a href="/logout" data-method="delete"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
     </ul>
     <% end %>
   </div>

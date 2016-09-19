@@ -1,0 +1,29 @@
+<div class="container">
+  <% @restaurants.each do |restaurant| %>
+  <div class="jumbotron">
+    <div class="page_content">
+      <table>
+        <thead>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </thead>
+        <tbody>
+          <td id="restaurant_name"><%= restaurant.name %></td>
+          <td id="restaurant_img"><img src=<%= restaurant.image_url %> alt="Profile picture of the restaurant" /></td>
+          <td><img src=<%= restaurant.rating_img_url_large %> alt="Yelp rating stars" /></td>
+          <td id="review_count"><%= restaurant.review_count %></td>
+          <td id="restaurant_distance"><%= restaurant.distance %></td>
+          <td><a href=<%= restaurant.url %>><button type="button" class="btn btn-outline-secondary"><strong>More Information</strong></button></a></td>
+          <td id="restaurant_status"><%= restaurant.status %></td>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <% end %>
+</div>

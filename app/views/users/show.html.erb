@@ -1,10 +1,13 @@
 <div class="container">
   <div class="jumbotron">
     <div class="page_content">
-      <img src=<%= current_user.image_path %> class="img-thumbnail" alt="Profile Picture" width="304" height="236">
-      <p>
-        <strong><%= current_user.first_name %></strong>
-      </p>
+      <div class="text-rigth">
+        <img src=<%= current_user.image_path %> class="img-thumbnail" alt="Profile Picture" width="304" height="236">
+        <p>
+          <strong><%= current_user.first_name %></strong>
+        </p>
+        <a href="/search/index"><button type="button" class="btn btn-outline-secondary"><strong>Generate Search</strong></button></a>
+      </div>
     </div>
   </div>
 </div>
