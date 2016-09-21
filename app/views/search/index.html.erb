@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" id="restaurant_jumbotrons">
   <% @restaurants.each do |restaurant| %>
   <div class="jumbotron">
     <div class="page_content">
@@ -13,7 +13,7 @@
           <div class="col-md-4 search_content">
             <p class="restaurant_info">Ratings: <img src=<%= restaurant.rating_img_url %> alt="Yelp rating stars" /></p>
             <p class="restaurant_info">Reviews: <%= restaurant.review_count %></p>
-            <p class="restaurant_info">Distance: <%= restaurant.distance %></p>
+            <p class="restaurant_info">Distance: <%= restaurant.distance %> miles</p>
             <p class="restaurant_info">Status: <%= restaurant.status %></p>
           </div>
           <div class="col-md-4 search_content">
