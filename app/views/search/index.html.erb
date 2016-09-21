@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" id="restaurant_jumbotrons">
   <% @restaurants.each do |restaurant| %>
   <div class="jumbotron">
     <div class="page_content">
@@ -10,15 +10,25 @@
           <div class="col-md-4 search_content text-center">
             <img src=<%= restaurant.image_url %> class="img-thumbnail" alt="Profile picture of the restaurant" />
           </div>
-          <div class="col-md-5 search_content">
+          <div class="col-md-4 search_content">
             <p class="restaurant_info">Ratings: <img src=<%= restaurant.rating_img_url %> alt="Yelp rating stars" /></p>
             <p class="restaurant_info">Reviews: <%= restaurant.review_count %></p>
-            <p class="restaurant_info">Distance: <%= restaurant.distance %></p>
+            <p class="restaurant_info">Distance: <%= restaurant.distance %> miles</p>
             <p class="restaurant_info">Status: <%= restaurant.status %></p>
           </div>
-          <div class="col-md-3 search_content">
+          <div class="col-md-4 search_content">
             <p>For more information please continue to: </p><br>
-            <a href=<%= restaurant.url %>><button type="button" class="btn btn-outline-secondary"><strong>More Information</strong></button></a>
+            <div class="text-center">
+              <a href=<%= restaurant.url %>><%= image_tag "yelp-logo-xsmall@2x.png" %></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="col-xs-6 col-md-6 search_buttons">
+            <button class="btn btn-lg btn-danger" type="button" name="Previous"><span class="glyphicon glyphicon-menu-left"></span></button>
+          </div>
+          <div class="col-xs-6 col-md-6 search_buttons text-right">
+            <button class="btn btn-lg btn-success" type="button" name="Next"><span class="glyphicon glyphicon-menu-right"></span></button>
           </div>
         </div>
       </div>

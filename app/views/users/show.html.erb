@@ -1,14 +1,19 @@
 <div class="container">
   <div class="jumbotron">
     <div class="page_content">
-      <div class="text-rigth">
-        <% if current_user %>
-          <img src=<%= current_user.image_path %> class="img-thumbnail" alt="Profile Picture" width="304" height="236">
-        <% end %>
-        <p>
-          <strong><%= current_user.first_name %></strong>
-        </p>
-        <%= button_to "Generate Search", search_index_path, class: "btn btn-outline-secondary", method: :get %>
+      <div class="restaurant_name">
+        Weclome: <%= current_user.first_name %>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="col-md-6 dashboard_content text-center">
+            <img src=<%= current_user.image_path %> class="img-thumbnail img-responsive" alt="Profile Picture" width="304" height="236">
+          </div>
+          <div class="col-md-6 dashboard_content text-center generate_search">
+            <p>Prepare to be <strong>amazed!</strong></p><br>
+            <%= button_to "Generate Search", search_index_path, class: "btn btn-lg btn-outline-secondary", method: :get %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
